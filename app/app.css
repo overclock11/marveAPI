@@ -1,0 +1,19 @@
+/* app css stylesheet */
+.cabezera{
+  background-color: #4F3C38 ;
+}
+.cabezera img{
+  max-width: 40%;
+  max-height: 40%;
+  padding:3%;
+}
+.cabezera input{
+  margin-top: 4%;
+  height: 40px;
+}
+.personajes{
+  margin-top: 1%;
+  background-color: #F4F4F4;
+  border-radius: 3px;
+  padding: 1%;
+}
