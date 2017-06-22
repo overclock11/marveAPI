@@ -17,3 +17,20 @@
   border-radius: 3px;
   padding: 1%;
 }
+.img-circular{
+  border-radius: 50%;
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  margin-top: -12%;
+  margin-left: -20%;
+}
+.md-card{
+  height: 350px;
+}
+.text-card{
+  margin-left: 6%;
+}
+.md-warn{
+  background-color: red;
+}

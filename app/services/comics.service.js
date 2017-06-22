@@ -1,13 +1,12 @@
-marvel.service("servicioPersonajes",["$http","marvelCons","md5","$q",function($http,marvelCons,md5,$q){
+marvel.service("servicioComics",["$http","marvelCons","md5","$q",function($http,marvelCons,md5,$q){
   var vm = this;
-  vm.traerPersonajes = function (){
+  vm.traerDetalleComic = function (urlBase){
     var defered = $q.defer();
     var promise = defered.promise;
     var timestamp = Date.now();
 
-    $http.get(marvelCons.URL_BASE_SERVICIOS,{
+    $http.get(urlBase,{
       params:{
-        limit:20,
         ts:timestamp,
         apikey:marvelCons.PUBLIC_KEY,
         hash:md5.createHash(timestamp+""+marvelCons.PRIVATE_KEY+""+marvelCons.PUBLIC_KEY)

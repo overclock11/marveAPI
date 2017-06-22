@@ -21,51 +21,48 @@
           <h4>Characters</h4>
         </div>
         <div class="col-md-5 col-md-offset-3">
-          <select class="form-control" name="Ordenar">
-            <option value="1">Sort by</option>
-            <option value="1">Sort by</option>
-            <option value="1">Sort by</option>
+          <select class="form-control" name="Ordenar" ng-model="orden">
+            <option value="" selected>Sort by</option>
+            <option value="name">Name</option>
+            <option value="id">Id</option>
           </select>
         </div>
       </div>
 
       <!-- seccion de personajes -->
       <div class="col-md-12">
-        <div class="col-md-6">
-          <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+        <br>
+        <div class="col-md-6" ng-repeat="personaje in personajes | filter:buscar | orderBy: orden ">
+          <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch class="md-card">
             <md-card-title>
-              <md-card-title-text>
-                <span class="md-headline">Card with image</span>
-                <span class="md-subhead">Large</span>
-              </md-card-title-text>
               <md-card-title-media>
-                <div class="md-media-lg card-media"></div>
+                <div class="col-md-6 card-media">
+                  <div class="md-media-lg">
+                    <img src="{{personaje.thumbnail.path}}.{{personaje.thumbnail.extension}}" class="img-circular">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <span class="md-headline">{{personaje.name}}</span>
+                  <span class="md-subhead">{{personaje.description  | limitTo:50 }}</span>
+                  <br>
+                  <md-button  class="md-raised md-warn">View more</md-button>
+                </div>
+                <div class="col-md-12">
+                  <h3 style="margin-top:40px;">Related comics</h3>
+                  <div class="col-md-3" ng-repeat="comic in personaje.comics.items  | limitTo : 4">
+                    <a ng-click="showAdvanced($event,comic);" style="cursor:pointer;">{{comic.name   | limitTo : 24}}</a>
+                  </div>
+                </div>
               </md-card-title-media>
             </md-card-title>
-            <md-card-actions layout="row" layout-align="end center">
-              <md-button>Action 1</md-button>
-              <md-button>Action 2</md-button>
-            </md-card-actions>
           </md-card>
         </div>
-        <div class="col-md-6">
-          <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-            <md-card-title>
-              <md-card-title-text>
-                <span class="md-headline">Card with image</span>
-                <span class="md-subhead">Large</span>
-              </md-card-title-text>
-              <md-card-title-media>
-                <div class="md-media-lg card-media"></div>
-              </md-card-title-media>
-            </md-card-title>
-            <md-card-actions layout="row" layout-align="end center">
-              <md-button>Action 1</md-button>
-              <md-button>Action 2</md-button>
-            </md-card-actions>
-          </md-card>          
-        </div>
       </div>
+    </div>
+    <!-- fin seccion personajes -->
+
+    <div class="col-md-3 personajes">
+      <h2> <img src="img/icons/btn-favourites-primary.png" alt=""> My favourites</h2>
     </div>
   </div>
 </div>
